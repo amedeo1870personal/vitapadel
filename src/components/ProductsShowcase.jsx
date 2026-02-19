@@ -14,7 +14,7 @@ const CourtCard = ({ title, image, description, delay }) => (
             <img
                 src={image}
                 alt={title}
-                className="w-full h-full object-contain bg-gradient-to-b from-gray-800 to-black p-4 group-hover:scale-105 transition-transform duration-500"
+                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
             />
         </div>
         <div className="p-6">
