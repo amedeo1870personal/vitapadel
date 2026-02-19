@@ -6,9 +6,6 @@ const CampiPage = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
 
     const images = [
-        "/assets/vitapadel-campi-da-padel-01.png",
-        "/assets/vitapadel-campi-da-padel-02.png",
-        "/assets/vitapadel-campi-da-padel-03.png",
         "/assets/campi/vitapadel-campi-da-padel-04.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-05.png",
         "/assets/campi/vitapadel-campi-da-padel-06.jpg",
