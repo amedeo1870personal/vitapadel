@@ -34,10 +34,10 @@ const ProductsShowcase = () => {
         {
             title: "Campo Panoramico",
             image: "/assets/vitapadel-campi-da-padel-02.png",
-            description: "Struttura rinforzata 120x120x3mm con vetri temperati da 12mm. Visibilità migliorata per un'esperienza di gioco superiore."
+            description: "Struttura rinforzata 120x120x3mm con vetri temperati da 12mm o stratificati (6+1,52PVB+6mm o 8+1,52PVB+8mm). Visibilità migliorata per un'esperienza di gioco superiore."
         },
         {
-            title: "Super Panoramico",
+            title: "Campo Super Panoramico",
             image: "/assets/vitapadel-campi-da-padel-03.png",
             description: "Il top di gamma. Massima visibilità senza montanti posteriori, vetri stratificati e design esclusivo per eventi e tornei."
         }
