@@ -44,7 +44,17 @@ const ProductsShowcase = () => {
     ];
 
     return (
-        <section className="py-24 bg-charcoal relative">
+        <section className="py-24 bg-charcoal relative overflow-hidden">
+            {/* Technical Grid Overlay */}
+            <div className="absolute inset-0 opacity-[0.03] pointer-events-none"
+                style={{ backgroundImage: 'radial-gradient(circle, #fff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
+
+            {/* Background Text Accent */}
+            <div className="absolute -top-10 -right-20 opacity-[0.02] select-none pointer-events-none hidden lg:block">
+                <span className="text-[20rem] font-display font-black text-white uppercase italic leading-none">
+                    COURTS
+                </span>
+            </div>
             <div className="container mx-auto px-4">
                 <div className="text-center max-w-4xl mx-auto mb-16">
                     <motion.h2

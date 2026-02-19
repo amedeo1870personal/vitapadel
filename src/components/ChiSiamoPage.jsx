@@ -121,9 +121,12 @@ const ChiSiamoPage = () => {
                             viewport={{ once: true }}
                             className="lg:w-1/2"
                         >
-                            <div className="inline-block px-4 py-1 bg-white/5 backdrop-blur-md border border-gold/30 rounded-full text-gold text-sm font-bold tracking-widest uppercase mb-6">
+                            <div className="inline-block px-4 py-1 bg-white/5 backdrop-blur-md border border-gold/30 rounded-full text-gold text-sm font-bold tracking-widest uppercase mb-2">
                                 Il Nostro Founder
                             </div>
+                            <p className="text-white/90 italic text-lg md:text-xl mb-8 pl-6 border-l-2 border-gold/40 leading-relaxed font-medium max-w-2xl">
+                                "Solo chi ha vissuto la tensione del match sa cosa serve a un centro sportivo per eccellere."
+                            </p>
                             <h2 className="text-3xl md:text-5xl font-display font-bold uppercase mb-8 italic">
                                 Andrea <span className={gradientText}>Zullo</span>
                             </h2>
@@ -151,10 +154,6 @@ const ChiSiamoPage = () => {
                                 alt="Andrea Zullo - Founder Vitapadel™"
                                 className="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-square"
                             />
-                            <div className="absolute bottom-8 left-8 bg-charcoal/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl z-20 max-w-xs">
-                                <p className="text-gold font-bold uppercase tracking-widest text-xs mb-2">Competenza sul campo</p>
-                                <p className="text-sm font-light">"Solo chi ha vissuto la tensione del match sa cosa serve a un centro sportivo per eccellere."</p>
-                            </div>
                         </motion.div>
                     </div>
                 </div>

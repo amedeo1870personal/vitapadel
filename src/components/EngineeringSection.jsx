@@ -106,8 +106,8 @@ const EngineeringSection = () => {
             </div>
 
             {/* Background Text Overlay */}
-            <div className="absolute bottom-0 left-0 w-full overflow-hidden opacity-[0.03] select-none pointer-events-none translate-y-1/2">
-                <span className="text-[15rem] font-display font-black text-white uppercase italic whitespace-nowrap">
+            <div className="absolute top-0 left-0 w-full overflow-hidden opacity-[0.03] select-none pointer-events-none -translate-y-12">
+                <span className="text-[15rem] font-display font-black text-white uppercase italic whitespace-nowrap leading-none">
                     Engineering Excellence Engineering Excellence
                 </span>
             </div>

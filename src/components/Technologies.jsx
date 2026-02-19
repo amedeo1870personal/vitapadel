@@ -44,8 +44,18 @@ const Technologies = () => {
     ];
 
     return (
-        <section className="py-24 bg-charcoal relative">
-            <div className="container mx-auto px-4">
+        <section className="py-24 bg-charcoal relative overflow-hidden">
+            {/* Background Text Accent */}
+            <div className="absolute top-0 left-0 w-full overflow-hidden opacity-[0.02] select-none pointer-events-none -translate-y-12">
+                <span className="text-[20rem] font-display font-black text-white uppercase italic leading-none whitespace-nowrap">
+                    ROOFS ROOFS ROOFS
+                </span>
+            </div>
+
+            {/* Soft Blue Glow Accent */}
+            <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-padel-blue/5 blur-[150px] rounded-full pointer-events-none" />
+
+            <div className="container mx-auto px-4 relative z-10">
                 <div className="text-center max-w-4xl mx-auto mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
