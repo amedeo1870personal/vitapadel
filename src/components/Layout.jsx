@@ -9,7 +9,7 @@ const Header = () => {
         <header className="fixed w-full z-50 bg-charcoal/90 backdrop-blur-md border-b border-white/10">
             <div className="container mx-auto px-4 py-4 flex justify-between items-center">
                 <Link to="/" className="flex items-center">
-                    <img src="/assets/logo-completo.png" alt="VITAPADEL Logo" className="h-10 md:h-12 w-auto" />
+                    <img src="/assets/logo-completo.png" alt="Vitapadel™ Logo" className="h-10 md:h-12 w-auto" />
                 </Link>
 
                 {/* Desktop Menu */}
@@ -76,7 +76,7 @@ const Footer = () => (
         <div className="container mx-auto px-4 grid md:grid-cols-4 gap-8">
             <div>
                 <div className="mb-6">
-                    <img src="/assets/logo-completo.png" alt="VITAPADEL Logo" className="h-12 md:h-14 w-auto" />
+                    <img src="/assets/logo-completo.png" alt="Vitapadel™ Logo" className="h-12 md:h-14 w-auto" />
                 </div>
                 <div className="text-gray-400 text-sm space-y-1">
                     <p className="font-bold text-white mb-2">Vitapadel ™ è un marchio di Earth's Dreams SRL</p>
@@ -112,7 +112,7 @@ const Footer = () => (
             </div>
         </div>
         <div className="container mx-auto px-4 mt-8 pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-500 text-sm">
-            <p>© {new Date().getFullYear()} Vita Padel. All rights reserved.</p>
+            <p>© {new Date().getFullYear()} Vitapadel™. All rights reserved.</p>
             <Link to="/privacy" className="hover:text-gold transition-colors">Privacy Policy</Link>
         </div>
     </footer>

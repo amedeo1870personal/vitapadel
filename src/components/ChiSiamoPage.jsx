@@ -43,7 +43,7 @@ const CardItem = ({ title, description, icon: Icon, delay, color, number }) => (
 );
 
 const ChiSiamoPage = () => {
-    const gradientText = "bg-gradient-to-r from-yellow-400 via-orange-500 to-fuchsia-600 bg-clip-text text-transparent";
+    const gradientText = "inline-block bg-gradient-to-r from-yellow-400 via-orange-500 to-fuchsia-600 bg-clip-text text-transparent px-2";
 
     return (
         <div className="bg-charcoal text-white pt-24">
@@ -61,7 +61,7 @@ const ChiSiamoPage = () => {
                             Dalla Passione <span className={gradientText}>per lo Sport</span> alla Costruzione di Club Vincenti
                         </h1>
                         <p className="text-xl md:text-2xl text-gray-400 font-light leading-relaxed">
-                            La storia di VITAPADEL è il racconto di una visione: trasformare l'amore per il gioco in eccellenza ingegneristica per i centri sportivi del futuro.
+                            La storia di Vitapadel™ è il racconto di una visione: trasformare l'amore per il gioco in eccellenza ingegneristica per i centri sportivi del futuro.
                         </p>
                     </motion.div>
                 </div>
@@ -102,7 +102,7 @@ const ChiSiamoPage = () => {
                             <div className="rounded-3xl shadow-2xl relative z-10 w-full h-[400px] overflow-hidden">
                                 <img
                                     src="/assets/andrea-padel1.jpg"
-                                    alt="VITAPADEL Team in Action"
+                                    alt="Vitapadel™ Team in Action"
                                     className="w-full h-full object-cover object-[center_20%]"
                                 />
                             </div>
@@ -129,7 +129,7 @@ const ChiSiamoPage = () => {
                             </h2>
                             <div className="space-y-6 text-lg text-gray-300 font-light leading-relaxed">
                                 <p>
-                                    Andrea Zullo incarna perfettamente lo spirito di VITAPADEL. Giocatore di tennis di lungo corso, classificato per anni nei principali tornei italiani, ha trasferito la sua esperienza agonistica e la sua dedizione nel mondo del padel.
+                                    Andrea Zullo incarna perfettamente lo spirito di Vitapadel™. Giocatore di tennis di lungo corso, classificato per anni nei principali tornei italiani, ha trasferito la sua esperienza agonistica e la sua dedizione nel mondo del padel.
                                 </p>
                                 <p>
                                     Oggi, come istruttore federale certificato, Andrea conosce ogni sfumatura di ciò che serve a un giocatore per dare il meglio: rimbalzo perfetto, sicurezza strutturale e comfort ambientale.
@@ -148,7 +148,7 @@ const ChiSiamoPage = () => {
                             <div className="absolute -inset-4 bg-gold/20 blur-3xl opacity-30 rounded-full" />
                             <img
                                 src="/assets/andrea-padel2.jpg"
-                                alt="Andrea Zullo - Founder VITAPADEL"
+                                alt="Andrea Zullo - Founder Vitapadel™"
                                 className="rounded-3xl shadow-2xl relative z-10 w-full object-cover aspect-square"
                             />
                             <div className="absolute bottom-8 left-8 bg-charcoal/80 backdrop-blur-md border border-white/10 p-6 rounded-2xl z-20 max-w-xs">

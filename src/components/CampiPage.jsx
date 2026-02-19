@@ -102,9 +102,9 @@ const CampiPage = () => {
                             className="relative group overflow-hidden rounded-2xl border border-white/10 cursor-pointer"
                         >
                             <img
-                                src={src}
-                                alt={`Vita Padel Campo ${index + 1}`}
-                                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                src={`/assets/campi/campo-${index + 1}.jpg`}
+                                alt={`Vitapadel™ Campo ${index + 1}`}
+                                className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 loading="lazy"
                             />
                             {/* Image Numbering Overlay */}

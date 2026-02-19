@@ -31,7 +31,7 @@ const EngineeringSection = () => {
                         <div className="relative z-10 rounded-[32px] overflow-hidden shadow-2xl border border-white/10 aspect-[4/5] lg:aspect-auto lg:h-[600px]">
                             <img
                                 src="/assets/team-ing.jpg"
-                                alt="Team Ingegneria VITAPADEL"
+                                alt="Team Ingegneria Vitapadel™"
                                 className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-[2000ms]"
                             />
                             {/* Technical Overlay */}
