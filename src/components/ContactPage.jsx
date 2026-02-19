@@ -9,12 +9,28 @@ const ContactPage = () => {
         e.preventDefault();
         setStatus('sending');
 
-        // Simulating the sending process
-        // For production, the user would connect this to Formspree, Getform, or a custom backend
-        setTimeout(() => {
-            setStatus('success');
-            e.target.reset();
-        }, 2000);
+        const formData = new FormData(e.target);
+        formData.append("access_key", "6c629d48-9c9a-44fd-988b-1c42fa7c268f");
+
+        try {
+            const response = await fetch("https://api.web3forms.com/submit", {
+                method: "POST",
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (data.success) {
+                setStatus('success');
+                e.target.reset();
+            } else {
+                console.log("Error", data);
+                setStatus('error');
+            }
+        } catch (error) {
+            console.log("Error", error);
+            setStatus('error');
+        }
     };
 
     return (
@@ -109,6 +125,7 @@ const ContactPage = () => {
                                             <input
                                                 required
                                                 type="text"
+                                                name="name"
                                                 placeholder="Mario Rossi"
                                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 outline-none focus:border-padel-blue/50 focus:bg-white/10 transition-all"
                                             />
@@ -118,6 +135,7 @@ const ContactPage = () => {
                                             <input
                                                 required
                                                 type="email"
+                                                name="email"
                                                 placeholder="mario@email.it"
                                                 className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 outline-none focus:border-padel-blue/50 focus:bg-white/10 transition-all"
                                             />
@@ -129,6 +147,7 @@ const ContactPage = () => {
                                         <input
                                             required
                                             type="text"
+                                            name="subject"
                                             placeholder="Richiesta preventivo campi da padel"
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 outline-none focus:border-padel-blue/50 focus:bg-white/10 transition-all"
                                         />
@@ -139,6 +158,7 @@ const ContactPage = () => {
                                         <textarea
                                             required
                                             rows="5"
+                                            name="message"
                                             placeholder="Scrivi qui i dettagli del tuo progetto..."
                                             className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 outline-none focus:border-padel-blue/50 focus:bg-white/10 transition-all resize-none"
                                         ></textarea>
