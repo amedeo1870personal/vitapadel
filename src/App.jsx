@@ -13,6 +13,9 @@ import PlateeSection from './components/PlateeSection';
 import PlateePage from './components/PlateePage';
 import PrivacyPage from './components/PrivacyPage';
 import ScrollToTop from './components/ScrollToTop';
+import ContactPage from './components/ContactPage';
+import WhatsAppButton from './components/WhatsAppButton';
+import ChiSiamoPage from './components/ChiSiamoPage';
 
 function App() {
   return (
@@ -73,9 +76,12 @@ function App() {
           <Route path="/coperture" element={<><div className="pt-20"><CoperturePage /></div></>} />
           <Route path="/platee-zavorre" element={<><div className="pt-20"><PlateePage /></div></>} />
           <Route path="/accessori" element={<><div className="pt-20"><AccessoriesPage /></div></>} />
+          <Route path="/chi-siamo" element={<ChiSiamoPage />} />
+          <Route path="/contatti" element={<ContactPage />} />
           <Route path="/privacy" element={<PrivacyPage />} />
         </Routes>
       </Layout>
+      <WhatsAppButton />
     </Router>
   );
 }
