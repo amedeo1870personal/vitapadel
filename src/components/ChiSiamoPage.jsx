@@ -121,7 +121,7 @@ const ChiSiamoPage = () => {
                             viewport={{ once: true }}
                             className="lg:w-1/2"
                         >
-                            <div className="inline-block px-4 py-1 bg-gradient-to-r from-yellow-400 to-fuchsia-600/20 border border-gold/30 rounded-full text-gold text-sm font-bold tracking-widest uppercase mb-6">
+                            <div className="inline-block px-4 py-1 bg-white/5 backdrop-blur-md border border-gold/30 rounded-full text-gold text-sm font-bold tracking-widest uppercase mb-6">
                                 Il Nostro Founder
                             </div>
                             <h2 className="text-3xl md:text-5xl font-display font-bold uppercase mb-8 italic">
@@ -129,10 +129,10 @@ const ChiSiamoPage = () => {
                             </h2>
                             <div className="space-y-6 text-lg text-gray-300 font-light leading-relaxed">
                                 <p>
-                                    Andrea Zullo incarna perfettamente lo spirito di Vitapadel™. Giocatore di tennis di lungo corso, classificato per anni nei principali tornei italiani, ha trasferito la sua esperienza agonistica e la sua dedizione nel mondo del padel.
+                                    Andrea Zullo incarna perfettamente lo spirito di Vitapadel™. Giocatore di tennis di lungo corso, vincitore di alcuni tornei italiani, sia di tennis che di padel, ha trasferito la sua esperienza agonistica e la sua dedizione nel mondo del padel.
                                 </p>
                                 <p>
-                                    Oggi, come istruttore federale certificato, Andrea conosce ogni sfumatura di ciò che serve a un giocatore per dare il meglio: rimbalzo perfetto, sicurezza strutturale e comfort ambientale.
+                                    Oggi, come istruttore di Padel certificato dalla federazione italiana FITP, Andrea conosce ogni sfumatura di ciò che serve a un giocatore per dare il meglio: rimbalzo perfetto, sicurezza strutturale e comfort ambientale.
                                 </p>
                                 <p>
                                     Questa comprensione profonda del mondo sportivo, vissuta in prima persona sul campo, è il valore aggiunto che offriamo ai nostri clienti. Portiamo una visione tecnica unica in ogni progetto di design e costruzione.
