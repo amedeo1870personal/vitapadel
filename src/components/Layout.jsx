@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { Menu, X, Facebook, Instagram, Linkedin } from 'lucide-react';
+import { Menu, X, Facebook, Instagram } from 'lucide-react';
 import { useState } from 'react';
 
 const Header = () => {
@@ -105,9 +105,12 @@ const Footer = () => (
             <div>
                 <h4 className="font-bold mb-4">Social</h4>
                 <div className="flex space-x-4">
-                    <Facebook className="hover:text-padel-blue cursor-pointer" />
-                    <Instagram className="hover:text-pink-500 cursor-pointer" />
-                    <Linkedin className="hover:text-blue-700 cursor-pointer" />
+                    <a href="https://www.facebook.com/vitapadel.andreazullo" target="_blank" rel="noopener noreferrer" className="hover:text-padel-blue transition-colors">
+                        <Facebook size={24} />
+                    </a>
+                    <a href="https://www.instagram.com/vitapadel.andreazullo" target="_blank" rel="noopener noreferrer" className="hover:text-pink-500 transition-colors">
+                        <Instagram size={24} />
+                    </a>
                 </div>
             </div>
         </div>
