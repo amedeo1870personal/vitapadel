@@ -39,7 +39,7 @@ const ProductsShowcase = () => {
         {
             title: "Campo Super Panoramico",
             image: "/assets/vitapadel-campi-da-padel-03.png",
-            description: "Il top di gamma. Massima visibilità senza montanti posteriori, vetri stratificati e design esclusivo per eventi e tornei."
+            description: "Il top di gamma. Massima visibilità senza montanti posteriori, vetri temperati da 12mm o stratificati (6+1,52PVB+6mm o 8+1,52PVB+8mm) e design esclusivo per eventi e tornei."
         }
     ];
 
