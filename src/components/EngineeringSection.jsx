@@ -1,11 +1,12 @@
 import { motion } from 'framer-motion';
-import { Ruler, PencilLine, HardHat } from 'lucide-react';
+import { Ruler, PencilLine, HardHat, Scale } from 'lucide-react';
 
 const EngineeringSection = () => {
     const expertise = [
         { icon: Ruler, text: "Ingegneria Strutturale Avanzata" },
         { icon: PencilLine, text: "Architettura Sportiva d'Elite" },
-        { icon: HardHat, text: "Project Management Certificato" }
+        { icon: HardHat, text: "Project Management Certificato" },
+        { icon: Scale, text: "Consulenza Tecnico-Legale e Burocratica" }
     ];
 
     return (
@@ -80,7 +81,7 @@ const EngineeringSection = () => {
                                 Il nostro team comprende <span className="text-white font-bold">ingegneri strutturisti e architetti specialisti</span> in impianti sportivi di ultima generazione.
                             </p>
                             <p className="text-gray-400 text-base md:text-lg italic border-l-2 border-gold/40 pl-6">
-                                Non ci limitiamo a costruire campi: progettiamo il cuore pulsante del tuo business. Trasformiamo la complessità tecnica in un'eccellenza architettonica capace di attrarre giocatori e valorizzare il tuo investimento.
+                                Non ci limitiamo a costruire campi: progettiamo il cuore pulsante del tuo business. Trasformiamo la complessità tecnica in un'eccellenza architettonica capace di attrarre giocatori e valorizzare il tuo investimento. Offriamo un servizio di consulenza tecnico-legale per supportare il cliente in ogni aspetto, anche burocratico, per la presentazione della domanda al comune.
                             </p>
                         </motion.div>
 
