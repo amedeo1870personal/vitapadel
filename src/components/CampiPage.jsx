@@ -17,11 +17,17 @@ const CampiPage = () => {
         "/assets/campi/vitapadel-campi-da-padel-09.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-10.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-11.jpeg",
+        "/assets/campi/vitapadel-campi-da-padel-12.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-13.jpeg",
+        "/assets/campi/vitapadel-campi-da-padel-14.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-15.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-16.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-17.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-18.jpeg",
+        "/assets/campi/vitapadel-campi-da-padel-19.jpeg",
+        "/assets/campi/vitapadel-campi-da-padel-20.jpeg",
+        "/assets/campi/vitapadel-campi-da-padel-21.jpeg",
+        "/assets/campi/vitapadel-campi-da-padel-22.jpeg",
     ];
 
     const openLightbox = (index) => setSelectedIndex(index);
@@ -102,7 +108,7 @@ const CampiPage = () => {
                             className="relative group overflow-hidden rounded-2xl border border-white/10 cursor-pointer"
                         >
                             <img
-                                src={`/assets/campi/campo-${index + 1}.jpg`}
+                                src={src}
                                 alt={`Vitapadel™ Campo ${index + 1}`}
                                 className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                                 loading="lazy"
