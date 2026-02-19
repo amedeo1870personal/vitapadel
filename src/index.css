@@ -1,0 +1,21 @@
+@import "tailwindcss";
+
+@theme {
+  --color-gold: #D4AF37;
+  --color-padel-blue: #0055FF;
+  --color-tensor-green: #CCFF00;
+  --color-charcoal: #111111;
+  --color-gray-900: #1a1a1a;
+  
+  --font-sans: "Inter", system-ui, sans-serif;
+  --font-display: "Montserrat", system-ui, sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-charcoal text-white font-sans antialiased;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold;
+  }
+}
