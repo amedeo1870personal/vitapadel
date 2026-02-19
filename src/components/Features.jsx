@@ -55,7 +55,7 @@ const Features = () => {
             number: "02",
             icon: Ruler,
             title: "Ingegneria da Record",
-            description: "Creatori della tendostruttura più grande d'Italia (4.550 m²). Coperture innovative in acciaio e alluminio progettate per durare.",
+            description: "Creatori della tendostruttura più grande d'Italia (4.550 m²). Coperture innovative in acciaio o legno lamellare o alluminio progettate per durare.",
             color: "from-blue-400 to-cyan-500",
             glow: "shadow-blue-500/20"
         },
