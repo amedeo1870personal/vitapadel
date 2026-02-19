@@ -103,7 +103,6 @@ const CoperturePage = () => {
                 "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-07.jpg",
                 "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-08.jpg",
                 "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-09.jpg",
-                "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-10.mp4",
                 "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-11.mp4",
             ]
         },
