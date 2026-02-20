@@ -55,7 +55,7 @@ const ChiSiamoPage = () => {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
-                        className="max-w-4xl mx-auto text-center"
+                        className="max-w-4xl text-left"
                     >
                         <h1 className="text-4xl md:text-7xl font-display font-bold uppercase tracking-tighter italic mb-8">
                             Dalla Passione <span className={gradientText}>per lo Sport</span> alla Costruzione di Club Vincenti
@@ -195,7 +195,7 @@ const ChiSiamoPage = () => {
             <section className="py-20 bg-gold relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-full h-full bg-black/5 pointer-events-none" />
                 <div className="container mx-auto px-4 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
+                    <div className="max-w-4xl text-left">
                         <h2 className="text-3xl md:text-5xl font-display font-bold uppercase mb-8 italic text-charcoal">
                             Oltre la costruzione, <span className="underline decoration-charcoal underline-offset-8">Partnership pura</span>
                         </h2>
@@ -203,15 +203,15 @@ const ChiSiamoPage = () => {
                             "Sappiamo cosa significa giocare, allenarsi e competere. Per questo non progettiamo semplici strutture, ma veri spazi di eccellenza per massimizzare il vostro ritorno sull'investimento."
                         </p>
                         <div className="grid md:grid-cols-3 gap-8">
-                            <div className="flex flex-col items-center group">
+                            <div className="flex flex-col items-start group">
                                 <Award className="w-10 h-10 mb-4 text-charcoal group-hover:scale-110 transition-transform" />
                                 <p className="font-bold uppercase text-sm tracking-widest text-charcoal">Qualità Premium</p>
                             </div>
-                            <div className="flex flex-col items-center group">
+                            <div className="flex flex-col items-start group">
                                 <Users className="w-10 h-10 mb-4 text-charcoal group-hover:scale-110 transition-transform" />
                                 <p className="font-bold uppercase text-sm tracking-widest text-charcoal">Focus umano</p>
                             </div>
-                            <div className="flex flex-col items-center group">
+                            <div className="flex flex-col items-start group">
                                 <ShieldCheck className="w-10 h-10 mb-4 text-charcoal group-hover:scale-110 transition-transform" />
                                 <p className="font-bold uppercase text-sm tracking-widest text-charcoal">Affidabilità Certificata</p>
                             </div>

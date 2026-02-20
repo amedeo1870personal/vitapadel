@@ -9,10 +9,10 @@ const PlateeSection = () => {
             <div className="absolute -top-24 -right-24 w-96 h-96 bg-gold/5 blur-[120px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-16">
 
                     {/* Content Column */}
-                    <div className="flex-1 text-center lg:text-left">
+                    <div className="flex-1 text-left">
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
@@ -38,7 +38,7 @@ const PlateeSection = () => {
                             whileInView={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                             viewport={{ once: true }}
-                            className="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl mx-auto lg:mx-0"
+                            className="text-gray-400 text-lg md:text-xl leading-relaxed mb-8 max-w-2xl lg:mx-0 text-left"
                         >
                             Dalla platea fissa al sistema modulare: soluzioni evolute per costruire dove gli altri si fermano. Sfrutta l'efficienza di strutture mobili e rimovibili senza i vincoli del cemento tradizionale.
                         </motion.p>

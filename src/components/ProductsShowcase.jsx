@@ -56,7 +56,7 @@ const ProductsShowcase = () => {
                 </span>
             </div>
             <div className="container mx-auto px-4">
-                <div className="text-center max-w-4xl mx-auto mb-16">
+                <div className="text-left max-w-4xl mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

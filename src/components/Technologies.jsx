@@ -32,7 +32,7 @@ const Technologies = () => {
             image: "/assets/coperture/alluminio/vitapadel-coperture-alluminio-da-padel-01.jpg"
         },
         {
-            title: "Acciaio e Legno",
+            title: "Coperture in acciaio e legno lamellare",
             description: "Solidità architettonica. Un mix perfetto tra la forza dell'acciaio e l'eleganza estetica del legno lamellare.",
             image: "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-09.jpg"
         },
@@ -56,7 +56,7 @@ const Technologies = () => {
             <div className="absolute top-0 right-1/4 w-[600px] h-[600px] bg-padel-blue/5 blur-[150px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center max-w-4xl mx-auto mb-16">
+                <div className="text-left max-w-4xl mb-16">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

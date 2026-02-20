@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 const Accessories = () => {
     return (
         <section className="py-24 bg-gradient-to-br from-charcoal to-gray-900 relative border-t border-white/5">
-            <div className="container mx-auto px-4 flex flex-col md:flex-row items-center gap-16">
+            <div className="container mx-auto px-4 flex flex-col md:flex-row items-start md:items-center gap-16">
 
                 <div className="flex-1 w-full order-2 md:order-1">
                     <motion.div
@@ -23,7 +23,7 @@ const Accessories = () => {
                     </motion.div>
                 </div>
 
-                <div className="flex-1 text-center md:text-left order-1 md:order-2">
+                <div className="flex-1 text-left order-1 md:order-2">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

@@ -125,7 +125,7 @@ const PlateePage = () => {
             <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-gold/5 blur-[150px] rounded-full pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
-                <div className="text-center max-w-4xl mx-auto mb-24">
+                <div className="text-left max-w-4xl mb-24">
                     <motion.h1
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
@@ -152,7 +152,7 @@ const PlateePage = () => {
                         transition={{ delay: 0.2 }}
                         className="inline-block relative"
                     >
-                        <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl mx-auto italic border-l-4 border-gold pl-6 py-2">
+                        <p className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-2xl italic border-l-4 border-gold pl-6 py-2">
                             "Dalla platea fissa al sistema modulare: costruisci dove gli altri si fermano."
                         </p>
                     </motion.div>

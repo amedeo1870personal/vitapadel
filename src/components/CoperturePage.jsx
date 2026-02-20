@@ -174,7 +174,7 @@ const CoperturePage = () => {
         <section className="py-24 bg-charcoal relative">
             <div className="container mx-auto px-4">
                 {/* Header Standardized Section */}
-                <div className="text-center max-w-4xl mx-auto mb-24">
+                <div className="text-left max-w-4xl mb-24">
                     <motion.h2
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}

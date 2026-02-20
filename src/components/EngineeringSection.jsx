@@ -16,7 +16,7 @@ const EngineeringSection = () => {
             <div className="absolute -left-20 top-1/2 w-40 h-80 bg-gold/10 -skew-x-12 blur-[80px] pointer-events-none" />
 
             <div className="container mx-auto px-4">
-                <div className="flex flex-col lg:flex-row items-center gap-16">
+                <div className="flex flex-col lg:flex-row items-start lg:items-center gap-16">
 
                     {/* Image Side with Sport-Style Frame */}
                     <motion.div
@@ -49,7 +49,7 @@ const EngineeringSection = () => {
                     </motion.div>
 
                     {/* Content Side */}
-                    <div className="flex-1 text-center lg:text-left">
+                    <div className="flex-1 text-left">
                         <motion.p
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
