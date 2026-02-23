@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 const Accessories = () => {
     return (
@@ -40,12 +41,12 @@ const Accessories = () => {
                         Per il Tuo Circolo
                     </motion.p>
                     <p className="text-gray-300 text-lg mb-8 leading-relaxed max-w-xl">
-                        Forniture professionali progettate per garantire la massima performance di rimbalzo e durata.
+                        Forniture professionali progettate per garantire la massima performance e durata.
                         Possibilità di <strong className="text-white">personalizzazione con il marchio del tuo club</strong> per un tocco di esclusività unico.
                     </p>
-                    <button className="px-8 py-4 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-colors shadow-lg shadow-gold/20 uppercase tracking-wide">
-                        Richiedi Preventivo
-                    </button>
+                    <Link to="/accessori" className="inline-block px-8 py-4 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-colors shadow-lg shadow-gold/20 uppercase tracking-wide">
+                        scopri i nostri accessori
+                    </Link>
                 </div>
 
             </div>

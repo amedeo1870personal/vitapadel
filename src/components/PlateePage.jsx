@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
-import { ArrowRight, CheckCircle } from 'lucide-react';
+import { ShoppingBag, CheckCircle } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const FeatureBlock = ({ number, title, points, isReversed, image }) => (
     <motion.div
@@ -209,22 +210,24 @@ const PlateePage = () => {
                     </div>
                 </div>
 
-                <div className="mt-20 text-center">
+                <div className="mt-32 text-center px-4">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="inline-block p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm max-w-3xl"
+                        className="inline-block p-10 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 backdrop-blur-md w-full max-w-4xl shadow-2xl"
                     >
-                        <h3 className="text-2xl font-display font-bold text-white mb-4 uppercase">
-                            Pronto a Costruire il Tuo Club?
+                        <h3 className="text-3xl font-display font-bold text-white mb-4 uppercase">
+                            Basi Solide per il Tuo Investimento
                         </h3>
-                        <p className="text-gray-400 mb-8">
-                            Contattaci per una consulenza tecnica gratuita sulla soluzione di fondazione più adatta al tuo terreno.
+                        <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
+                            Dalle platee tradizionali ai sistemi di zavorre certificate, offriamo la fondazione perfetta per ogni esigenza normativa e di suolo.
                         </p>
-                        <a href="/contatti" className="inline-flex items-center gap-2 px-8 py-4 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-colors uppercase tracking-widest text-sm">
-                            Richiedi Consulenza <ArrowRight className="w-5 h-5" />
-                        </a>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link to="/contatti" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-all uppercase tracking-widest text-sm shadow-xl shadow-gold/20">
+                                <ShoppingBag className="w-5 h-5" /> Richiedi Informazioni Tecniche
+                            </Link>
+                        </div>
                     </motion.div>
                 </div>
             </div>

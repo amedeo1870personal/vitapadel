@@ -60,7 +60,7 @@ const ContactPage = () => {
                             </p>
 
                             <div className="space-y-8">
-                                <div className="flex items-start gap-6 group">
+                                <a href="tel:+393203761184" className="flex items-start gap-6 group">
                                     <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:bg-padel-blue/20 group-hover:border-padel-blue/30 transition-all duration-300">
                                         <Phone className="text-padel-blue w-6 h-6" />
                                     </div>
@@ -68,9 +68,24 @@ const ContactPage = () => {
                                         <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">Telefono</p>
                                         <p className="text-xl font-bold">+39 320 376 1184</p>
                                     </div>
-                                </div>
+                                </a>
 
-                                <div className="flex items-start gap-6 group">
+                                <a
+                                    href={`https://wa.me/393203761184?text=${encodeURIComponent("Ciao Vitapadel™, vorrei ricevere maggiori informazioni.")}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-start gap-6 group"
+                                >
+                                    <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:bg-[#25D366]/20 group-hover:border-[#25D366]/30 transition-all duration-300">
+                                        <MessageSquare className="text-[#25D366] w-6 h-6" />
+                                    </div>
+                                    <div>
+                                        <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">WhatsApp</p>
+                                        <p className="text-xl font-bold">+39 320 376 1184</p>
+                                    </div>
+                                </a>
+
+                                <a href="mailto:info@vitapadel.com" className="flex items-start gap-6 group">
                                     <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:bg-gold/20 group-hover:border-gold/30 transition-all duration-300">
                                         <Mail className="text-gold w-6 h-6" />
                                     </div>
@@ -78,7 +93,7 @@ const ContactPage = () => {
                                         <p className="text-sm text-gray-500 uppercase tracking-wider mb-1">Email</p>
                                         <p className="text-xl font-bold">info@vitapadel.com</p>
                                     </div>
-                                </div>
+                                </a>
 
                                 <div className="flex items-start gap-6 group">
                                     <div className="w-12 h-12 bg-white/5 border border-white/10 rounded-xl flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/20 transition-all duration-300">

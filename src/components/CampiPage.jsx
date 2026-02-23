@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const CampiPage = () => {
     const [selectedIndex, setSelectedIndex] = useState(null);
@@ -117,6 +118,27 @@ const CampiPage = () => {
                             <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                         </motion.div>
                     ))}
+                </div>
+
+                <div className="mt-32 text-center">
+                    <motion.div
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        className="inline-block p-10 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 backdrop-blur-md max-w-4xl shadow-2xl"
+                    >
+                        <h3 className="text-3xl font-display font-bold text-white mb-4 uppercase">
+                            Realizza il Tuo Circolo da Sogno
+                        </h3>
+                        <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
+                            Dalla progettazione all'installazione, i nostri campi sono costruiti per durare e offrire un'esperienza di gioco superiore.
+                        </p>
+                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                            <Link to="/contatti" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-all uppercase tracking-widest text-sm shadow-xl shadow-gold/20">
+                                <ShoppingBag className="w-5 h-5" /> Richiedi Informazioni
+                            </Link>
+                        </div>
+                    </motion.div>
                 </div>
             </div>
 

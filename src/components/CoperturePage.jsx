@@ -1,6 +1,30 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import { Link } from 'react-router-dom';
+
+const CTA = ({ title, description, buttonText }) => (
+    <div className="mt-16 mb-24 text-center px-4">
+        <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            className="inline-block p-10 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 backdrop-blur-md w-full max-w-4xl shadow-2xl"
+        >
+            <h3 className="text-3xl font-display font-bold text-white mb-4 uppercase">
+                {title}
+            </h3>
+            <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
+                {description}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                <Link to="/contatti" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-all uppercase tracking-widest text-sm shadow-xl shadow-gold/20">
+                    <ShoppingBag className="w-5 h-5" /> {buttonText}
+                </Link>
+            </div>
+        </motion.div>
+    </div>
+);
 
 const GallerySection = ({ title, subtitle, description, images, hero, onImageClick }) => {
     const isHeroVideo = hero && (hero.endsWith('.mp4') || hero.endsWith('.mov'));
@@ -291,20 +315,40 @@ const CoperturePage = () => {
                     {...categories.alluminio}
                     onImageClick={openLightbox}
                 />
+                <CTA
+                    title="Copri il tuo successo"
+                    description="Le nostre coperture in alluminio offrono leggerezza, eleganza e protezione totale 365 giorni l'anno."
+                    buttonText="Richiedi informazioni Coperture alluminio"
+                />
 
                 <GallerySection
                     {...categories.acciaio}
                     onImageClick={openLightbox}
+                />
+                <CTA
+                    title="Solidità Ingegneristica"
+                    description="Garantisci la massima sicurezza e resistenza climatica con le nostre strutture in acciaio e legno lamellare."
+                    buttonText="Richiedi informazioni Coperture acciaio"
                 />
 
                 <GallerySection
                     {...categories.telescopiche}
                     onImageClick={openLightbox}
                 />
+                <CTA
+                    title="La Libertà di Scegliere"
+                    description="Scopri il comfort di una struttura che si adatta alle stagioni, offrendo versatilità senza compromessi."
+                    buttonText="Richiedi informazioni Coperture telescopiche"
+                />
 
                 <GallerySection
                     {...categories.pneumatiche}
                     onImageClick={openLightbox}
+                />
+                <CTA
+                    title="Velocità e Innovazione"
+                    description="Implementa la soluzione più rapida ed efficiente per coprire i tuoi campi con le nostre strutture pneumatiche PAD™."
+                    buttonText="Richiedi informazioni Coperture gonfiabili"
                 />
             </div>
 

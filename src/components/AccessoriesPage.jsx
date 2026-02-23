@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { ShoppingBag, Star, ShieldCheck, Zap } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const AccessoriesPage = () => {
     const galleryItems = [
@@ -53,7 +54,7 @@ const AccessoriesPage = () => {
                         className="text-gray-300 text-lg md:text-xl leading-relaxed max-w-3xl mx-auto"
                     >
                         Scopri la nostra selezione di palline premium per il Padel, disponibili nelle iconiche colorazioni Giallo e Fucsia.
-                        Progettate per le esigenze dei circoli sportivi più prestigiosi, le nostre palline offrono una performance di rimbalzo costante
+                        Progettate per le esigenze dei circoli sportivi più prestigiosi, le nostre palline offrono una performance costante
                         e una durata superiore ai record del settore. Grazie al nostro servizio esclusivo, puoi
                         <strong className="text-white"> personalizzare il prodotto con il marchio del tuo club</strong>, garantendo un'immagine coordinata e professionale in ogni match.
                     </motion.p>
@@ -143,23 +144,23 @@ const AccessoriesPage = () => {
                     ))}
                 </div>
 
-                <div className="mt-20 text-center">
+                <div className="mt-20 text-center px-4">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.9 }}
                         whileInView={{ opacity: 1, scale: 1 }}
                         viewport={{ once: true }}
-                        className="inline-block p-10 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 backdrop-blur-md max-w-4xl shadow-2xl"
+                        className="inline-block p-10 rounded-[40px] bg-gradient-to-br from-white/10 to-transparent border border-white/10 backdrop-blur-md w-full max-w-4xl shadow-2xl"
                     >
                         <h3 className="text-3xl font-display font-bold text-white mb-4 uppercase">
                             Fai brillare il tuo Club
                         </h3>
-                        <p className="text-gray-400 mb-8 text-lg">
+                        <p className="text-gray-400 mb-8 text-lg max-w-2xl mx-auto">
                             Contattaci oggi stesso per ricevere un listino prezzi riservato ai circoli sportivi e scoprire le opzioni di personalizzazione.
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <a href="/contatti" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-all uppercase tracking-widest text-sm shadow-xl shadow-gold/20">
-                                <ShoppingBag className="w-5 h-5" /> Richiedi Preventivo
-                            </a>
+                            <Link to="/contatti" className="inline-flex items-center justify-center gap-2 px-10 py-5 bg-gold text-charcoal rounded-full font-bold hover:bg-yellow-500 transition-all uppercase tracking-widest text-sm shadow-xl shadow-gold/20">
+                                <ShoppingBag className="w-5 h-5" /> Richiedi Informazioni
+                            </Link>
                         </div>
                     </motion.div>
                 </div>
