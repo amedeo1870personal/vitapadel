@@ -68,8 +68,10 @@ const GallerySection = ({ title, subtitle, description, images, hero, onImageCli
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                     )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
-                        <span className="text-white font-display font-bold uppercase tracking-widest text-sm">Visualizza a schermo intero</span>
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <span className="text-white font-display font-bold uppercase tracking-widest text-sm bg-black/50 px-6 py-3 rounded-full backdrop-blur-md border border-white/20">
+                            Visualizza a schermo intero
+                        </span>
                     </div>
                 </motion.div>
             )}
