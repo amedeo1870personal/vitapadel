@@ -2,44 +2,63 @@ import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { ChevronRight } from 'lucide-react';
 
-const TechCard = ({ title, description, image, delay }) => (
-    <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay }}
-        viewport={{ once: true }}
-        className="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-padel-blue/50 transition-all duration-300"
-    >
-        <div className="aspect-[4/3] overflow-hidden">
-            <img
-                src={image}
-                alt={title}
-                className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-            />
-        </div>
-        <div className="p-6">
-            <h3 className="text-2xl font-display font-bold text-white mb-2">{title}</h3>
-            <p className="text-gray-400 text-sm leading-relaxed mb-4">{description}</p>
-        </div>
-    </motion.div>
-);
+const TechCard = ({ title, description, image, delay }) => {
+    const isVideo = image.endsWith('.mp4') || image.endsWith('.mov');
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay }}
+            viewport={{ once: true }}
+            className="group relative overflow-hidden rounded-2xl bg-white/5 border border-white/10 hover:border-padel-blue/50 transition-all duration-300"
+        >
+            <div className="aspect-[4/3] overflow-hidden">
+                {isVideo ? (
+                    <video
+                        src={image}
+                        autoPlay
+                        muted
+                        loop
+                        playsInline
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                ) : (
+                    <img
+                        src={image}
+                        alt={title}
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                )}
+            </div>
+            <div className="p-6">
+                <h3 className="text-xl font-display font-bold text-white mb-2">{title}</h3>
+                <p className="text-gray-400 text-xs leading-relaxed mb-4">{description}</p>
+            </div>
+        </motion.div>
+    );
+};
 
 const Technologies = () => {
     const technologies = [
         {
             title: "Coperture in Alluminio",
             description: "Strutture in alluminio aeronautico 6061-T6, garantite contro la corrosione e progettate per durare decenni.",
-            image: "/assets/coperture/alluminio/vitapadel-coperture-alluminio-da-padel-01.jpg"
+            image: "/assets/coperture/alluminio/vitapadel-coperture-alluminio-da-padel-24.mp4"
         },
         {
-            title: "Coperture in acciaio e legno lamellare",
+            title: "Coperture acciaio e legno lamellare",
             description: "Solidità architettonica. Un mix perfetto tra la forza dell'acciaio e l'eleganza estetica del legno lamellare.",
-            image: "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-09.jpg"
+            image: "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-11.mp4"
         },
         {
             title: "Coperture Telescopiche",
             description: "Versatilità totale. Una struttura completamente apribile per adattarsi a ogni stagione e condizione climatica.",
-            image: "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-11.png"
+            image: "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-10.mp4"
+        },
+        {
+            title: "Coperture Pneumatiche PAD™️ (Power Air Dome) e Pressostatiche",
+            description: "Soluzioni a pressione d'aria .Velocità di montaggio no permessi edilizi.",
+            image: "/assets/coperture/gonfiabili/copertura-gonfiabile-02.mp4"
         }
     ];
 
@@ -82,7 +101,7 @@ const Technologies = () => {
                     </motion.p>
                 </div>
 
-                <div className="grid md:grid-cols-3 gap-8 mb-16">
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
                     {technologies.map((tech, index) => (
                         <TechCard key={index} {...tech} delay={index * 0.1} />
                     ))}

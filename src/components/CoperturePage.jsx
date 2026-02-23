@@ -2,60 +2,95 @@ import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
-const GallerySection = ({ title, subtitle, description, images, onImageClick }) => (
-    <div className="mb-24">
-        <div className="mb-12">
-            <h3 className="text-2xl md:text-3xl font-display font-bold text-white mb-2 uppercase tracking-tight">
-                {title}
-            </h3>
-            <p className="text-gold font-bold tracking-widest uppercase text-xs mb-4">
-                {subtitle}
-            </p>
-            <p className="text-gray-400 text-lg leading-relaxed max-w-3xl border-l border-gold/30 pl-6">
-                {description}
-            </p>
+const GallerySection = ({ title, subtitle, description, images, hero, onImageClick }) => {
+    const isHeroVideo = hero && (hero.endsWith('.mp4') || hero.endsWith('.mov'));
+
+    return (
+        <div className="mb-32">
+            <div className="mb-12">
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-2 uppercase tracking-tight">
+                    {title}
+                </h3>
+                <p className="text-gold font-bold tracking-widest uppercase text-sm mb-6">
+                    {subtitle}
+                </p>
+                <p className="text-gray-300 text-lg leading-relaxed max-w-4xl border-l-2 border-padel-blue pl-6 italic">
+                    {description}
+                </p>
+            </div>
+
+            {/* Hero Media for Gallery */}
+            {hero && (
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    onClick={() => onImageClick(hero)}
+                    className="relative w-full aspect-video mb-8 rounded-2xl overflow-hidden border border-white/10 cursor-pointer group"
+                >
+                    {isHeroVideo ? (
+                        <video
+                            src={hero}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                    ) : (
+                        <img
+                            src={hero}
+                            alt={`${title} Hero`}
+                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                        />
+                    )}
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-8">
+                        <span className="text-white font-display font-bold uppercase tracking-widest text-sm">Visualizza a schermo intero</span>
+                    </div>
+                </motion.div>
+            )}
+
+            <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+                {images.map((src, index) => {
+                    const isVideo = src.endsWith('.mp4') || src.endsWith('.mov');
+                    return (
+                        <motion.div
+                            key={index}
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
+                            viewport={{ once: true }}
+                            onClick={() => onImageClick(src)}
+                            className="relative group overflow-hidden rounded-xl border border-white/10 cursor-pointer"
+                        >
+                            {isVideo ? (
+                                <video
+                                    src={src}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    className="w-full h-auto object-cover"
+                                />
+                            ) : (
+                                <img
+                                    src={src}
+                                    alt={`${title} - ${index + 1} `}
+                                    className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                    loading="lazy"
+                                />
+                            )}
+                            <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white/70 tracking-widest pointer-events-none">
+                                {(index + 1).toString().padStart(2, '0')}
+                            </div>
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                        </motion.div>
+                    );
+                })}
+            </div>
         </div>
-        <div className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
-            {images.map((src, index) => {
-                const isVideo = src.endsWith('.mp4') || src.endsWith('.mov');
-                return (
-                    <motion.div
-                        key={index}
-                        initial={{ opacity: 0, scale: 0.9 }}
-                        whileInView={{ opacity: 1, scale: 1 }}
-                        transition={{ duration: 0.5, delay: (index % 3) * 0.1 }}
-                        viewport={{ once: true }}
-                        onClick={() => onImageClick(src)}
-                        className="relative group overflow-hidden rounded-xl border border-white/10 cursor-pointer"
-                    >
-                        {isVideo ? (
-                            <video
-                                src={src}
-                                autoPlay
-                                muted
-                                loop
-                                playsInline
-                                className="w-full h-auto object-cover"
-                            />
-                        ) : (
-                            <img
-                                src={src}
-                                alt={`${title} - ${index + 1} `}
-                                className="w-full h-auto object-cover transform group-hover:scale-105 transition-transform duration-700"
-                                loading="lazy"
-                            />
-                        )}
-                        {/* Image Numbering Overlay */}
-                        <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white/70 tracking-widest pointer-events-none">
-                            {(index + 1).toString().padStart(2, '0')}
-                        </div>
-                        <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                    </motion.div>
-                );
-            })}
-        </div>
-    </div>
-);
+    );
+};
 
 const CoperturePage = () => {
     const [selectedImage, setSelectedImage] = useState(null);
@@ -66,6 +101,7 @@ const CoperturePage = () => {
             title: "Strutture in Alluminio",
             subtitle: "Leggerezza e Durata Eterna",
             description: "Tendostrutture in lega di alluminio 6061-T6 (alluminio aeronautico). Il vantaggio principale è l'assenza totale di corrosione, garantendo una durata eccezionale. Personalizzabili in dimensioni e altezza, con teli PVC da 850g/m² per la massima resistenza.",
+            hero: "/assets/coperture/alluminio/vitapadel-coperture-alluminio-da-padel-24.mp4",
             images: [
                 "/assets/coperture/alluminio/vitapadel-coperture-alluminio-da-padel-01.jpg",
                 "/assets/coperture/alluminio/vitapadel-coperture-alluminio-da-padel-03.jpg",
@@ -93,6 +129,7 @@ const CoperturePage = () => {
             title: "Acciaio e Legno Lamellare",
             subtitle: "Solidità ed Eleganza Architettonica",
             description: "Design elegante e strutturalmente solido. Progettate per integrarsi perfettamente in circoli sportivi di alto livello, combinando la resistenza dell'acciaio al calore estetico del legno lamellare. Un connubio perfetto tra natura e tecnologia.",
+            hero: "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-11.mp4",
             images: [
                 "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-01.png",
                 "/assets/coperture/acciaio/vitapadel-coperture-acciaio-da-padel-02.png",
@@ -110,6 +147,7 @@ const CoperturePage = () => {
             title: "Coperture Telescopiche",
             subtitle: "Versatilità Totale Stagionale",
             description: "La novità esclusiva che massimizza la versatilità del tuo campo. Una copertura completamente apribile che ti permette di godere del gioco all'aperto in estate e di una protezione totale in inverno. Il meglio di entrambi i mondi.",
+            hero: "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-10.mp4",
             images: [
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-01.jpg",
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-02.jpg",
@@ -123,11 +161,59 @@ const CoperturePage = () => {
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-10.mp4",
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-11.png",
             ]
+        },
+        pneumatiche: {
+            title: "Coperture Pneumatiche PAD™️ (Power Air Dome) e Pressostatiche",
+            subtitle: "Efficienza e Velocità di Installazione",
+            description: "Le nostre Coperture Pneumatiche PAD™️ e Pressostatiche rappresentano la massima espressione di versatilità. Sfruttando tecnologie avanzate di pressione d'aria, queste strutture offrono una velocità di montaggio senza eguali e, grazie alle loro caratteristiche costruttive, spesso non richiedono permessi edilizi complessi. Ideali per coprire ampie superfici in tempi record, garantiscono un ambiente di gioco luminoso, protetto e confortevole 365 giorni l'anno.",
+            hero: "/assets/coperture/gonfiabili/copertura-gonfiabile-02.mp4",
+            images: [
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-01.png",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-03.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-04.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-05.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-06.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-07.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-08.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-09.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-10.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-11.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-12.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-13.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-14.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-15.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-16.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-17.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-18.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-19.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-20.jpeg",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-21.mp4",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-22.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-23.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-24.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-25.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-26.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-27.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-28.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-29.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-30.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-31.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-32.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-33.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-34.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-35.webp",
+                "/assets/coperture/gonfiabili/copertura-gonfiabile-36.webp",
+            ]
         }
     };
 
     useEffect(() => {
-        setAllImages([...categories.alluminio.images, ...categories.acciaio.images, ...categories.telescopiche.images]);
+        setAllImages([
+            ...categories.alluminio.images,
+            ...categories.acciaio.images,
+            ...categories.telescopiche.images,
+            ...categories.pneumatiche.images
+        ]);
     }, []);
 
     const openLightbox = (src) => setSelectedImage(src);
@@ -213,6 +299,11 @@ const CoperturePage = () => {
 
                 <GallerySection
                     {...categories.telescopiche}
+                    onImageClick={openLightbox}
+                />
+
+                <GallerySection
+                    {...categories.pneumatiche}
                     onImageClick={openLightbox}
                 />
             </div>
