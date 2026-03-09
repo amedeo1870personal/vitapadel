@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ShoppingBag, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CampiPage = () => {
@@ -27,6 +27,15 @@ const CampiPage = () => {
         "/assets/campi/vitapadel-campi-da-padel-21.jpeg",
         "/assets/campi/vitapadel-campi-da-padel-22.jpeg",
     ];
+    const handleDownload = (e, src) => {
+        e.stopPropagation();
+        const link = document.createElement('a');
+        link.href = src;
+        link.download = src.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
 
     const openLightbox = (index) => setSelectedIndex(index);
     const closeLightbox = () => setSelectedIndex(null);
@@ -115,7 +124,20 @@ const CampiPage = () => {
                             <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white/70 tracking-widest pointer-events-none">
                                 {(index + 1).toString().padStart(2, '0')}
                             </div>
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <div className="absolute inset-0 flex items-center justify-center gap-4">
+                                    <div className="w-12 h-12 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-75">
+                                        <ChevronRight size={24} />
+                                    </div>
+                                    <button
+                                        onClick={(e) => handleDownload(e, src)}
+                                        className="w-12 h-12 rounded-full bg-gold text-charcoal flex items-center justify-center transform scale-0 group-hover:scale-100 transition-transform duration-300 delay-150 hover:bg-yellow-500"
+                                        title="Scarica"
+                                    >
+                                        <Download size={20} />
+                                    </button>
+                                </div>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -152,12 +174,21 @@ const CampiPage = () => {
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4"
                         onClick={closeLightbox}
                     >
-                        <button
-                            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]"
-                            onClick={closeLightbox}
-                        >
-                            <X size={32} />
-                        </button>
+                        <div className="absolute top-8 right-8 flex items-center gap-4 z-[110]">
+                            <button
+                                className="text-white/50 hover:text-white transition-colors bg-white/10 p-2 rounded-full backdrop-blur-md"
+                                onClick={(e) => { e.stopPropagation(); handleDownload(e, images[selectedIndex]); }}
+                                title="Scarica"
+                            >
+                                <Download size={24} />
+                            </button>
+                            <button
+                                className="text-white/50 hover:text-white transition-colors"
+                                onClick={closeLightbox}
+                            >
+                                <X size={32} />
+                            </button>
+                        </div>
 
                         <button
                             className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors z-[110]"
@@ -172,14 +203,25 @@ const CampiPage = () => {
                             animate={{ x: 0, opacity: 1 }}
                             exit={{ x: -100, opacity: 0 }}
                             transition={{ duration: 0.3 }}
-                            className="relative w-full h-full flex items-center justify-center pointer-events-none"
+                            className="relative w-full h-full flex items-center justify-center pointer-events-none px-4"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            <img
-                                src={images[selectedIndex]}
-                                alt="Full Screen"
-                                className="max-w-[90vw] max-h-[80vh] object-contain rounded-lg shadow-2xl shadow-gold/10 border border-white/10 pointer-events-auto"
-                            />
+                            {images[selectedIndex].endsWith('.mp4') || images[selectedIndex].endsWith('.mov') || images[selectedIndex].endsWith('.webm') ? (
+                                <video
+                                    src={images[selectedIndex]}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10 pointer-events-auto"
+                                />
+                            ) : (
+                                <img
+                                    src={images[selectedIndex]}
+                                    alt="Full Screen"
+                                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl shadow-gold/10 border border-white/10 pointer-events-auto"
+                                />
+                            )}
                         </motion.div>
 
                         <button

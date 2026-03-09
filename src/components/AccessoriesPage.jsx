@@ -1,8 +1,21 @@
-import { motion } from 'framer-motion';
-import { ShoppingBag, Star, ShieldCheck, Zap } from 'lucide-react';
+import { useState, useCallback, useEffect } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ShoppingBag, Star, ShieldCheck, Zap, Download, X, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const AccessoriesPage = () => {
+    const [selectedImage, setSelectedImage] = useState(null);
+
+    const handleDownload = (e, src) => {
+        if (e) e.stopPropagation();
+        const link = document.createElement('a');
+        link.href = src;
+        link.download = src.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     const galleryItems = [
         { src: "/assets/accessori/palline/vitapadel-palline-da-padel-07.jpeg", type: "image" },
         { src: "/assets/accessori/palline/vitapadel-palline-da-padel-08.jpeg", type: "image" },
@@ -18,6 +31,46 @@ const AccessoriesPage = () => {
         { src: "/assets/accessori/palline/vitapadel-palline-da-padel-11.mp4", type: "video" },
         { src: "/assets/accessori/palline/vitapadel-palline-da-padel-15.mp4", type: "video" },
     ];
+
+    const allImages = galleryItems.map(i => i.src);
+
+    const openLightbox = (src) => setSelectedImage(src);
+    const closeLightbox = () => setSelectedImage(null);
+
+    const currentIndex = selectedImage ? allImages.indexOf(selectedImage) : -1;
+
+    const nextImage = useCallback(() => {
+        if (currentIndex !== -1) {
+            const nextIdx = (currentIndex + 1) % allImages.length;
+            setSelectedImage(allImages[nextIdx]);
+        }
+    }, [currentIndex, allImages]);
+
+    const prevImage = useCallback(() => {
+        if (currentIndex !== -1) {
+            const prevIdx = (currentIndex - 1 + allImages.length) % allImages.length;
+            setSelectedImage(allImages[prevIdx]);
+        }
+    }, [currentIndex, allImages]);
+
+    useEffect(() => {
+        const handleKeyDown = (e) => {
+            if (!selectedImage) return;
+            if (e.key === "Escape") closeLightbox();
+            if (e.key === "ArrowRight") nextImage();
+            if (e.key === "ArrowLeft") prevImage();
+        };
+        window.addEventListener("keydown", handleKeyDown);
+        return () => window.removeEventListener("keydown", handleKeyDown);
+    }, [selectedImage, nextImage, prevImage]);
+
+    useEffect(() => {
+        if (selectedImage) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+    }, [selectedImage]);
 
     return (
         <section className="bg-charcoal min-h-screen pt-32 pb-24 relative overflow-hidden">
@@ -119,27 +172,39 @@ const AccessoriesPage = () => {
                             transition={{ delay: (idx % 4) * 0.1 }}
                             className="mb-4 relative group overflow-hidden rounded-2xl border border-white/10"
                         >
-                            {item.type === 'video' ? (
-                                <video
-                                    src={item.src}
-                                    autoPlay
-                                    muted
-                                    loop
-                                    playsInline
-                                    className="w-full h-full object-cover"
-                                />
-                            ) : (
-                                <img
-                                    src={item.src}
-                                    alt={`Pallina Padel ${idx + 1}`}
-                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                />
-                            )}
-                            {/* Image Numbering Overlay */}
+                            <div
+                                onClick={() => openLightbox(item.src)}
+                                className="cursor-pointer"
+                            >
+                                {item.type === 'video' ? (
+                                    <video
+                                        src={item.src}
+                                        autoPlay
+                                        muted
+                                        loop
+                                        playsInline
+                                        className="w-full h-full object-cover"
+                                    />
+                                ) : (
+                                    <img
+                                        src={item.src}
+                                        alt={`Pallina Padel ${idx + 1}`}
+                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                    />
+                                )}
+                            </div>
                             <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white/70 tracking-widest pointer-events-none">
                                 {(idx + 1).toString().padStart(2, '0')}
                             </div>
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity" />
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4 pointer-events-none">
+                                <button
+                                    onClick={(e) => handleDownload(e, item.src)}
+                                    className="w-12 h-12 rounded-full bg-gold text-charcoal flex items-center justify-center backdrop-blur-md hover:bg-yellow-500 transition-all z-10 pointer-events-auto"
+                                    title="Scarica"
+                                >
+                                    <Download size={20} />
+                                </button>
+                            </div>
                         </motion.div>
                     ))}
                 </div>
@@ -165,6 +230,79 @@ const AccessoriesPage = () => {
                     </motion.div>
                 </div>
             </div>
+            {/* Lightbox Modal */}
+            <AnimatePresence>
+                {selectedImage && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4"
+                        onClick={closeLightbox}
+                    >
+                        <div className="absolute top-8 right-8 flex items-center gap-4 z-[110]">
+                            <button
+                                className="text-white/50 hover:text-white transition-colors bg-white/10 p-2 rounded-full backdrop-blur-md"
+                                onClick={(e) => { e.stopPropagation(); handleDownload(e, selectedImage); }}
+                                title="Scarica"
+                            >
+                                <Download size={24} />
+                            </button>
+                            <button
+                                className="text-white/50 hover:text-white transition-colors"
+                                onClick={closeLightbox}
+                            >
+                                <X size={32} />
+                            </button>
+                        </div>
+
+                        <button
+                            className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors z-[110]"
+                            onClick={(e) => { e.stopPropagation(); prevImage(); }}
+                        >
+                            <ChevronLeft size={48} />
+                        </button>
+
+                        <motion.div
+                            key={selectedImage}
+                            initial={{ x: 100, opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            exit={{ x: -100, opacity: 0 }}
+                            transition={{ duration: 0.3 }}
+                            className="relative w-full h-full flex items-center justify-center pointer-events-none px-4"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            {selectedImage.endsWith('.mp4') || selectedImage.endsWith('.mov') || selectedImage.endsWith('.webm') ? (
+                                <video
+                                    src={selectedImage}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10 pointer-events-auto"
+                                />
+                            ) : (
+                                <img
+                                    src={selectedImage}
+                                    alt="Full Screen"
+                                    className="max-w-full max-h-[85vh] object-contain rounded-lg shadow-2xl border border-white/10 pointer-events-auto shadow-yellow-500/10"
+                                />
+                            )}
+                        </motion.div>
+
+                        <button
+                            className="absolute right-4 md:right-8 text-white/50 hover:text-white transition-colors z-[110]"
+                            onClick={(e) => { e.stopPropagation(); nextImage(); }}
+                        >
+                            <ChevronRight size={48} />
+                        </button>
+
+                        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 text-white/40 font-display text-sm uppercase tracking-widest">
+                            {currentIndex + 1} / {allImages.length}
+                        </div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </section>
     );
 };

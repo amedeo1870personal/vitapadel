@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ShoppingBag, Download } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const CTA = ({ title, description, buttonText }) => (
@@ -26,8 +26,8 @@ const CTA = ({ title, description, buttonText }) => (
     </div>
 );
 
-const GallerySection = ({ title, subtitle, description, images, hero, onImageClick }) => {
-    const isHeroVideo = hero && (hero.endsWith('.mp4') || hero.endsWith('.mov'));
+const GallerySection = ({ title, subtitle, description, images, hero, onImageClick, onDownload }) => {
+    const isHeroVideo = hero && (hero.endsWith('.mp4') || hero.endsWith('.mov') || hero.endsWith('.webm'));
 
     return (
         <div className="mb-32">
@@ -68,10 +68,17 @@ const GallerySection = ({ title, subtitle, description, images, hero, onImageCli
                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                     )}
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
                         <span className="text-white font-display font-bold uppercase tracking-widest text-sm bg-black/50 px-6 py-3 rounded-full backdrop-blur-md border border-white/20">
                             Visualizza a schermo intero
                         </span>
+                        <button
+                            onClick={(e) => { e.stopPropagation(); onDownload(e, hero); }}
+                            className="w-12 h-12 rounded-full bg-gold text-charcoal flex items-center justify-center backdrop-blur-md hover:bg-yellow-500 transition-all z-10"
+                            title="Scarica"
+                        >
+                            <Download size={20} />
+                        </button>
                     </div>
                 </motion.div>
             )}
@@ -109,7 +116,15 @@ const GallerySection = ({ title, subtitle, description, images, hero, onImageCli
                             <div className="absolute top-4 right-4 z-20 px-3 py-1 bg-black/40 backdrop-blur-md border border-white/10 rounded-full text-[10px] font-bold text-white/70 tracking-widest pointer-events-none">
                                 {(index + 1).toString().padStart(2, '0')}
                             </div>
-                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                            <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-4">
+                                <button
+                                    onClick={(e) => { e.stopPropagation(); onDownload(e, src); }}
+                                    className="w-12 h-12 rounded-full bg-gold text-charcoal flex items-center justify-center backdrop-blur-md hover:bg-yellow-500 transition-all z-10"
+                                    title="Scarica"
+                                >
+                                    <Download size={20} />
+                                </button>
+                            </div>
                         </motion.div>
                     );
                 })}
@@ -233,6 +248,16 @@ const CoperturePage = () => {
         }
     };
 
+    const handleDownload = (e, src) => {
+        if (e) e.stopPropagation();
+        const link = document.createElement('a');
+        link.href = src;
+        link.download = src.split('/').pop();
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+    };
+
     useEffect(() => {
         setAllImages([
             ...categories.alluminio.images,
@@ -316,6 +341,7 @@ const CoperturePage = () => {
                 <GallerySection
                     {...categories.alluminio}
                     onImageClick={openLightbox}
+                    onDownload={handleDownload}
                 />
                 <CTA
                     title="Copri il tuo successo"
@@ -326,6 +352,7 @@ const CoperturePage = () => {
                 <GallerySection
                     {...categories.acciaio}
                     onImageClick={openLightbox}
+                    onDownload={handleDownload}
                 />
                 <CTA
                     title="Solidità Ingegneristica"
@@ -336,6 +363,7 @@ const CoperturePage = () => {
                 <GallerySection
                     {...categories.telescopiche}
                     onImageClick={openLightbox}
+                    onDownload={handleDownload}
                 />
                 <CTA
                     title="La Libertà di Scegliere"
@@ -346,6 +374,7 @@ const CoperturePage = () => {
                 <GallerySection
                     {...categories.pneumatiche}
                     onImageClick={openLightbox}
+                    onDownload={handleDownload}
                 />
                 <CTA
                     title="Velocità e Innovazione"
@@ -364,12 +393,21 @@ const CoperturePage = () => {
                         className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-sm px-4"
                         onClick={closeLightbox}
                     >
-                        <button
-                            className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]"
-                            onClick={closeLightbox}
-                        >
-                            <X size={32} />
-                        </button>
+                        <div className="absolute top-8 right-8 flex items-center gap-4 z-[110]">
+                            <button
+                                className="text-white/50 hover:text-white transition-colors bg-white/10 p-2 rounded-full backdrop-blur-md"
+                                onClick={(e) => { e.stopPropagation(); handleDownload(e, selectedImage); }}
+                                title="Scarica"
+                            >
+                                <Download size={24} />
+                            </button>
+                            <button
+                                className="text-white/50 hover:text-white transition-colors"
+                                onClick={closeLightbox}
+                            >
+                                <X size={32} />
+                            </button>
+                        </div>
 
                         <button
                             className="absolute left-4 md:left-8 text-white/50 hover:text-white transition-colors z-[110]"
@@ -387,7 +425,7 @@ const CoperturePage = () => {
                             className="relative w-full h-full flex items-center justify-center pointer-events-none px-4"
                             onClick={(e) => e.stopPropagation()}
                         >
-                            {selectedImage.endsWith('.mp4') || selectedImage.endsWith('.mov') ? (
+                            {selectedImage.endsWith('.mp4') || selectedImage.endsWith('.mov') || selectedImage.endsWith('.webm') ? (
                                 <video
                                     src={selectedImage}
                                     autoPlay
