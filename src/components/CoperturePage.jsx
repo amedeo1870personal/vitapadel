@@ -201,6 +201,7 @@ const CoperturePage = () => {
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-09.jpg",
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-10.mp4",
                 "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-11.png",
+                "/assets/coperture/telescopiche/vitapadel-coperture-telescopiche-da-padel-12.mp4",
             ]
         },
         pneumatiche: {
